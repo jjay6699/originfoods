@@ -55,6 +55,7 @@ export function CapabilitiesCarousel() {
               role="button"
               tabIndex={0}
               aria-pressed={flippedCard === card.title}
+              onMouseEnter={() => setFlippedCard((current) => current && current !== card.title ? null : current)}
               onClick={() => setFlippedCard((current) => current === card.title ? null : card.title)}
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
