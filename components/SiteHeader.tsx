@@ -3,18 +3,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About TOF", href: "#about" },
-  { label: "Personalised Services", href: "#services" },
-  { label: "Facilities (4G)", href: "#facilities" },
-  { label: "Wheatgrass", href: "#wheatgrass" },
-  { label: "Quality Products", href: "#products" },
+  { label: "About Us", href: "#about" },
+  { label: "OEM / ODM Solution", href: "#services" },
+  { label: "Product Concept", href: "#products" },
+  { label: "Functional ingredients", href: "#wheatgrass" },
+  { label: "Insights", href: "#facilities" },
+  { label: "Contacts", href: "#contact" },
 ];
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="site-header">
@@ -22,15 +25,12 @@ export function SiteHeader() {
         <Link className="brand" href="/" aria-label="The Origin Foods home">
           <span className="brand-mark">
             <Image
-              src="/logo.png"
+              src="/logo-footer.png"
               alt="The Origin Foods"
-              width={132}
-              height={46}
+              width={210}
+              height={68}
               priority
             />
-          </span>
-          <span className="brand-text">
-            <strong>The Origin Foods</strong>
           </span>
         </Link>
 
@@ -48,7 +48,7 @@ export function SiteHeader() {
 
         <nav className={`site-nav ${isOpen ? "is-open" : ""}`} aria-label="Main navigation">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
+            <Link key={item.href} href={item.href} className={item.href === "/" && pathname === "/" ? "is-active" : undefined} aria-current={item.href === "/" && pathname === "/" ? "page" : undefined} onClick={() => setIsOpen(false)}>
               {item.label}
             </Link>
           ))}

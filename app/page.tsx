@@ -1,46 +1,108 @@
 import Link from "next/link";
 import Image from "next/image";
-import { SiteHeader } from "@/components/SiteHeader";
+import { WorkProcess } from "@/components/WorkProcess";
 
 const heroSlides = [
   {
     src: "/hero/manufacturing-floor.png",
     alt: "Clean nutraceutical manufacturing floor with production equipment",
-    label: "Manufacturing",
+    title: "Health. Innovation. Partnership.",
+    body: "Where product possibilities become dependable wellness brands, supported by an experienced Malaysian manufacturing partner.",
   },
   {
     src: "/hero/quality-lab.png",
     alt: "Modern nutraceutical quality laboratory with botanical formulation samples",
-    label: "Quality Lab",
+    title: "Manufacturing excellence for growing brands",
+    body: "From formulation and production to documentation and testing, Origin Foods helps health and wellness brands move forward with confidence.",
+  },
+  {
+    src: "/sections/wheatgrass-aeroponic.png",
+    alt: "Indoor aeroponic wheatgrass cultivation for nutraceutical products",
+    title: "Making better health more accessible",
+    body: "Restoring health. Transforming lives. Building practical product concepts for everyday nutrition and wellbeing.",
   },
 ];
 
-const services = [
+const journeyCards = [
   {
-    number: "01",
-    title: "Contract Manufacturing",
-    summary:
-      "Turn-key production support for tablets, capsules, powders, chewables, sachets, tea bags, liquids, bottles, canisters, and pouch filling.",
+    icon: "launch",
+    title: "New Brand Owners",
+    audience: "Entrepreneurs entering the supplement industry.",
+    help: "End-to-end guidance from concept to market launch.",
+    details: "Product concept, format selection, formulation, packaging, and production planning.",
   },
   {
-    number: "02",
-    title: "Custom Formulation",
-    summary:
-      "R&D support to translate a product concept into a practical formulation, including raw material, packaging, and technical product guidance.",
+    icon: "growth",
+    title: "Growing Brands",
+    audience: "Established brands facing growth bottlenecks.",
+    help: "Innovation, reformulation, and growth-oriented strategy.",
+    details: "New product development, reformulation, production planning, and repeat supply support.",
   },
   {
-    number: "03",
-    title: "Registration & Export Documentation",
-    summary:
-      "Client support for product documentation, certification applications, costing analysis, and relevant Malaysia regulatory endorsements.",
+    icon: "market",
+    title: "International Brands Entering Malaysia",
+    audience: "Overseas brands entering Malaysia.",
+    help: "Regulatory, registration, and market-entry support.",
+    details: "Local product documentation, registration support, and manufacturing coordination in Malaysia.",
   },
   {
-    number: "04",
-    title: "Laboratory Testing & Analysis",
-    summary:
-      "Testing coordination for physical, heavy metal, disintegration, stability, nutritional, and microbiological analysis through qualified resources.",
+    icon: "manufacturing",
+    title: "International Manufacturing Partners",
+    audience: "Overseas brands seeking export manufacturing.",
+    help: "Flexible manufacturing, export, and regional reach.",
+    details: "Contract manufacturing for export programs, specified formats, and regional supply requirements.",
   },
 ];
+
+const companyMetrics = [
+  { value: "26+", label: "Years of experience", icon: "experience" },
+  { value: "23+", label: "Countries exported", icon: "global" },
+  { value: "5", label: "GMP certified sites", icon: "facility" },
+  { value: "12+", label: "Global awards recognition", icon: "award" },
+  { value: "1,000+", label: "Formulations developed", icon: "formula" },
+  { value: "250+", label: "People supporting production", icon: "people" },
+];
+
+const workSteps = [
+  { title: "Product Innovation & Formulation", text: "Differentiated, science-backed, commercially competitive products.", bullets: ["Global branded ingredient library", "Mechanism-driven formulations", "Evidence-based ingredient selection", "Competitive cost-performance"] },
+  { title: "Regulatory & Compliance Expertise", text: "Smooth registration and compliance for faster market entry.", bullets: ["Complex product registration", "KKLIU & label compliance", "Halal advisory", "Import & export guidance"] },
+  { title: "Quality Assurance & Validation", text: "Consistent, high-quality products backed by scientific validation.", bullets: ["QA & QC systems", "Assay & stability testing", "COA & product documentation", "Batch consistency monitoring"] },
+  { title: "Manufacturing Excellence", text: "Reliable, efficient and scalable manufacturing solutions.", bullets: ["Flexible production capacity", "Capacity & process optimization", "Lead-time optimization", "Continuous improvement"] },
+  { title: "Commercialization & Market Success", text: "Helping clients build successful, sustainable brands beyond manufacturing.", bullets: ["Go-to-market strategy", "Market trend insights", "Brand positioning support", "Product lifecycle management", "Product packaging design"] },
+];
+
+function WorkStepIcon({ type }: { type: string }) {
+  if (type === "innovation") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 4h10M14 4v8l-6 11a3 3 0 0 0 2.6 4.5h10.8A3 3 0 0 0 24 23L18 12V4M11 19h10" /></svg>;
+  if (type === "compliance") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m16 4 3 2 3.6-.2 1.2 3.4 2.8 2.2-1.2 3.4 1.2 3.4-2.8 2.2-1.2 3.4L19 21l-3 2-3-2-3.6.2-1.2-3.4-2.8-2.2 1.2-3.4-1.2-3.4 2.8-2.2 1.2-3.4L13 6l3-2Z" /><path d="m11.5 14.5 3 3 6-6" /></svg>;
+  if (type === "quality") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 25h18M9 22V11h6v11M17 22V7h6v15M12 15h0M20 11h0" /></svg>;
+  if (type === "manufacturing") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26V13l8 5v-7l8 5V8l8 5v13H4ZM9 26v-4h4v4M19 26v-4h4v4" /></svg>;
+  return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 25 26 4M17 4h9v9M7 18l-3 3 7 7 3-3M20 14l5 5" /></svg>;
+}
+
+function MetricIcon({ type }: { type: string }) {
+  if (type === "global") return <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" /><path d="M5 16h22M16 5c3 3.1 4.5 6.8 4.5 11S19 23 16 27c-3-4-4.5-7.7-4.5-11S13 8.1 16 5Z" /></svg>;
+  if (type === "facility") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 27V10l11-5 11 5v17M10 15h3M19 15h3M10 20h3M19 20h3M14 27v-5h4v5" /></svg>;
+  if (type === "award") return <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="13" r="8" /><path d="m12 20-2 8 6-3 6 3-2-8M16 9l1.2 2.5 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4L16 9Z" /></svg>;
+  if (type === "formula") return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 6h18M7 26h18M10 6l12 20M22 6 10 26" /><circle cx="16" cy="16" r="12" /></svg>;
+  if (type === "people") return <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="10" r="4" /><path d="M9 27c.5-5 3-8 7-8s6.5 3 7 8M7 16c-3 1-4.5 3.5-5 7M25 16c3 1 4.5 3.5 5 7" /></svg>;
+  return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 19 11l7 .6-5.3 4.6 1.6 7-6.3-3.8-6.3 3.8 1.6-7L6 11.6l7-.6 3-7Z" /></svg>;
+}
+
+function JourneyIcon({ type }: { type: string }) {
+  if (type === "launch") {
+    return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c5.6 2.3 8.8 6.6 8.8 12.2 0 5.2-3.2 8.9-8.8 13.2-5.6-4.3-8.8-8-8.8-13.2C7.2 9.6 10.4 5.3 16 3Z" /><path d="m11.5 21.5-4 1.5 1.5-4M20.5 21.5l4 1.5-1.5-4M16 10.5v7M12.5 14h7" /></svg>;
+  }
+
+  if (type === "growth") {
+    return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 25V7M5 25h22M9 20l5-5 4 3 8-9M21 9h5v5" /></svg>;
+  }
+
+  if (type === "market") {
+    return <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="14" r="9" /><path d="M7 14h18M16 5c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S13.6 7.5 16 5ZM16 23v5M11 28h10" /></svg>;
+  }
+
+  return <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 27V14h7V9h7v5h10v13H4ZM11 27v-6h7v6M22 18h3M22 22h3M7 18h2" /></svg>;
+}
 
 const facilityHighlights = [
   "GMP, GLP, GAP and HACCP-oriented operating standards",
@@ -132,8 +194,7 @@ const footerColumns = [
 
 export default function Home() {
   return (
-    <main>
-      <SiteHeader />
+    <main className="homepage">
 
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-background" aria-hidden="true">
@@ -154,67 +215,96 @@ export default function Home() {
 
         <div className="hero-inner">
           <div className="hero-copy hero-copy-panel">
-            <h1 id="hero-title">
-              Manufacturing Health, Wellness & Functional Food Products in Malaysia
-            </h1>
-            <p className="hero-body">
-              The Origin Foods supports brand owners with contract manufacturing,
-              custom formulation, product registration support, and biotechnology-led
-              wheatgrass expertise.
-            </p>
+            {heroSlides.map((slide, index) => (
+              <div className="hero-slide-copy" key={slide.src}>
+                {index === 0 ? (
+                  <h1 id="hero-title">{slide.title}</h1>
+                ) : (
+                  <h2>{slide.title}</h2>
+                )}
+                <p className="hero-body">{slide.body}</p>
 
-            <div className="hero-actions" aria-label="Primary actions">
-              <Link className="button button-primary" href="#contact">
-                Discuss Your Product
-              </Link>
-              <Link className="button button-secondary" href="#facilities">
-                Explore Capabilities
-              </Link>
-            </div>
+                <div className="hero-actions" aria-label="Primary actions">
+                  <Link className="button button-primary" href="#contact">
+                    Discuss Your Product
+                  </Link>
+                  <Link className="button button-secondary" href="#facilities">
+                    Explore Capabilities
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="slider-dots" aria-hidden="true">
           <span />
           <span />
+          <span />
+        </div>
+      </section>
+
+      <section className="company-overview-section" aria-labelledby="overview-title">
+        <div className="section-inner">
+          <div className="overview-banner">
+            <Image src="/sections/quality-control-cleanroom.jpg" alt="Quality control work in a cleanroom manufacturing environment" fill sizes="100vw" />
+            <div className="overview-banner-overlay" />
+            <div className="overview-banner-copy">
+              <span className="section-kicker">The Origin Foods</span>
+              <h2 id="overview-title">Experience behind every product decision</h2>
+              <p>Our experience across formulation, manufacturing, and product support helps brand owners move from a clear idea to a dependable finished product.</p>
+            </div>
+          </div>
+
+          <div className="metrics-grid overview-metrics" aria-label="Origin Foods at a glance">
+            {companyMetrics.map((metric) => (
+              <div className="metric-item" key={metric.label}>
+                <span className="metric-icon"><MetricIcon type={metric.icon} /></span>
+                <div><strong>{metric.value}</strong><span>{metric.label}</span></div>
+              </div>
+            ))}
+          </div>
+
+          <WorkProcess />
         </div>
       </section>
 
       <section className="services-section" id="services" aria-labelledby="services-title">
         <div className="section-inner">
-          <div className="section-heading">
-            <span className="section-kicker">Personalised Services</span>
-            <h2 id="services-title">OEM support from concept to finished product</h2>
-              <p>
-                Origin Foods works with brand owners as an OEM partner, supporting the
-              formulation, manufacturing, documentation, and testing steps needed to
-              bring wellness and functional food products to market.
-              </p>
+          <div className="journey-heading">
+            <span className="section-kicker">Who we support</span>
+            <h2 id="services-title">A manufacturing pathway built around your stage of growth</h2>
+            <p>From first product concept to regional supply, Origin Foods supports the next step in your commercial journey.</p>
           </div>
 
-          <div className="services-grid">
-            {services.map((service) => (
-              <article className="service-card" key={service.title}>
-                <span className="service-number">{service.number}</span>
-                <h3>{service.title}</h3>
-                <p>{service.summary}</p>
+          <div className="journey-grid">
+            {journeyCards.map((card) => (
+              <article className="journey-card" key={card.title} tabIndex={0}>
+                <div className="journey-card-inner">
+                  <div className="journey-card-face journey-card-front">
+                    <span className="journey-icon"><JourneyIcon type={card.icon} /></span>
+                    <h3>{card.title}</h3>
+                    <p className="journey-audience">{card.audience}</p>
+                    <span className="journey-card-action">More Info <span aria-hidden="true">-&gt;</span></span>
+                  </div>
+                  <div className="journey-card-face journey-card-back">
+                    <span className="journey-card-label">How Origin Foods helps</span>
+                    <h3>{card.help}</h3>
+                    <p>{card.details}</p>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
 
-          <div className="services-cta">
-            <div>
-              <span>Need a custom OEM pathway?</span>
-              <strong>Start with the product type, target market, and documentation needs.</strong>
-            </div>
-            <Link className="button button-primary" href="#contact">
-              Plan My Product
-            </Link>
+          <div className="journey-band">
+            <strong>From concept to commercialization</strong>
+            <span>One experienced partner for formulation, documentation, manufacturing, and product development support.</span>
           </div>
         </div>
       </section>
 
-      <section className="facilities-section" id="facilities" aria-labelledby="facilities-title">
+      <section className="facilities-section legacy-home-section" id="facilities" aria-labelledby="facilities-title">
         <div className="section-inner facilities-layout">
           <div className="facilities-image">
             <Image
@@ -243,16 +333,22 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="format-list" aria-label="Supported production formats">
-              {productionFormats.map((format) => (
-                <span key={format}>{format}</span>
-              ))}
+            <div className="format-carousel" aria-label="Supported production formats">
+              <div className="format-carousel-header">
+                <span>Production formats</span>
+                <small>Scroll to view</small>
+              </div>
+              <div className="format-track">
+                {productionFormats.map((format) => (
+                  <span key={format}>{format}</span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="wheatgrass-section" id="wheatgrass" aria-labelledby="wheatgrass-title">
+      <section className="wheatgrass-section legacy-home-section" id="wheatgrass" aria-labelledby="wheatgrass-title">
         <div className="section-inner wheatgrass-layout">
           <div className="wheatgrass-copy">
             <span className="section-kicker green">Wheatgrass Technology</span>
@@ -295,7 +391,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="products-section" id="products" aria-labelledby="products-title">
+      <section className="products-section legacy-home-section" id="products" aria-labelledby="products-title">
         <div className="section-inner">
           <div className="products-header">
             <div className="section-heading">
@@ -329,7 +425,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contact-section" id="contact" aria-labelledby="contact-title">
+      <section className="contact-section legacy-home-section" id="contact" aria-labelledby="contact-title">
         <div className="section-inner contact-layout">
           <div className="contact-info">
             <span className="section-kicker">Contact Us</span>
@@ -425,14 +521,14 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer">
+      <footer className="site-footer legacy-page-footer" aria-hidden="true">
         <div className="section-inner footer-main">
           <div className="footer-brand">
             <Image
-              src="/logo-origin.png"
+              src="/logo-footer.png"
               alt="The Origin Foods"
-              width={132}
-              height={46}
+              width={210}
+              height={68}
               unoptimized
             />
             <p>

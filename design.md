@@ -10,7 +10,7 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 
 ## Brand System
 
-- Primary accent: `#005DAB`
+- Primary accent: `#22B24C`
 - Primary dark: `#003D72`
 - Soft accent: `#EAF5FF`
 - Main text: near-navy `#102033`
@@ -20,7 +20,7 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 
 ## Header
 
-- Use a solid `#005DAB` corporate header with a sticky position.
+- Use a solid `#22B24C` corporate header with a sticky position.
 - Use the existing white transparent `logo.png` directly on the blue header background.
 - Do not show the old subtitle/tagline beside the logo.
 - Navigation items: About, OEM Services, Facilities, Wheatgrass, Products, Contact.
@@ -77,7 +77,7 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 
 - Replace the old embedded map screenshot and plain form with a professional contact section.
 - Use a two-column layout: compact company contact details and an enquiry form.
-- Use the main brand accent `#005DAB` consistently for buttons and blue panels.
+- Use the main brand accent `#22B24C` consistently for buttons and accent panels.
 - Show a real map embed for the Puchong address with a clear address card beside it.
 - The form is frontend-only until backend/CRM integration is added.
 
@@ -100,7 +100,7 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 - Homepage loads without runtime errors.
 - Header is readable and responsive.
 - Existing logo is visible on the blue header.
-- `#005DAB` is the main accent.
+- `#22B24C` is the main accent.
 - Hero copy matches the approved first-slice plan.
 - CTAs are prominent and do not overlap on mobile.
 - Hero slider uses two relevant manufacturing/lab background images and can later be replaced with real company photography.
