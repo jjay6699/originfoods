@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body><SiteHeader />{children}<SiteFooter /></body>
+      <body suppressHydrationWarning><SiteHeader />{children}<SiteFooter /></body>
     </html>
   );
 }

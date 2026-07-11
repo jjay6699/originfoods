@@ -21,7 +21,7 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 ## Header
 
 - Use a solid `#22B24C` corporate header with a sticky position.
-- Use the existing white transparent `logo.png` directly on the blue header background.
+- Use the supplied colored logo on the off-white header background.
 - Do not show the old subtitle/tagline beside the logo.
 - Navigation items: About, OEM Services, Facilities, Wheatgrass, Products, Contact.
 - Do not show a header CTA button until the enquiry/contact section is designed.
@@ -37,7 +37,7 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 - Visual direction: facility, lab, manufacturing, or clean OEM production imagery.
 - Use a full-width hero background image slider with text and buttons over the image, similar in purpose to a Revolution Slider but cleaner and more corporate.
 - Use two slides: one manufacturing/facility image and one quality lab/formulation image.
-- Apply a dark blue overlay so white text remains readable on every slide.
+- Apply a consistent dark-green overlay so white text remains readable on every slide.
 - Keep the hero around 55% viewport height on desktop, not full-screen.
 - Do not place the text inside a visible box; use open overlay text with enough width for natural line breaks.
 - Do not show an eyebrow/tag above the hero headline.
@@ -55,7 +55,7 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 
 - Replace the old plain text block with a split section: facility image plus capability copy.
 - Present manufacturing standards and product formats as capability signals, with a note that certifications/facility claims must be verified before publishing.
-- Use blue accents, compact highlight rows, and production-format chips instead of a single long paragraph.
+- Use the primary green accent `#22B24C`, compact highlight rows, and production-format chips instead of a single long paragraph.
 
 ## Wheatgrass Section
 
@@ -88,6 +88,18 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 - Treat certifications, facility size, awards, and regulatory language as facts that must be verified before final publication.
 - Prefer "supports", "helps develop", "manufacturing capability", and "product registration support" over medical guarantees.
 
+## Typography Rules
+
+- Use one shared scale for normal section headings: `clamp(1.7rem, 2.2vw, 2.35rem)` on desktop and `1.7rem` on mobile.
+- Component titles inside cards or detail panels must be smaller than section headings.
+- Do not introduce a larger heading scale for a new section without a deliberate hero-level reason.
+
+## Section Layout Rules
+
+- Keep section content aligned to the shared `.section-inner` width.
+- Prefer one clear visual hierarchy per section; avoid repeated grids of equally weighted cards when a timeline or detail panel communicates the content better.
+- Keep the primary accent consistent as `#22B24C`; use neutral backgrounds and borders for secondary structure.
+
 ## Future CRM Notes
 
 - Keep the public site under `/`.
@@ -99,7 +111,7 @@ The primary audience is B2B: brand owners, supplement companies, distributors, e
 
 - Homepage loads without runtime errors.
 - Header is readable and responsive.
-- Existing logo is visible on the blue header.
+- Existing colored logo is visible on the off-white header.
 - `#22B24C` is the main accent.
 - Hero copy matches the approved first-slice plan.
 - CTAs are prominent and do not overlap on mobile.

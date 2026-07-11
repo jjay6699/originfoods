@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { WorkProcess } from "@/components/WorkProcess";
+import { CapabilitiesCarousel } from "@/components/CapabilitiesCarousel";
+import { AnimatedMetric } from "@/components/AnimatedMetric";
+import { EndToEndJourney } from "@/components/EndToEndJourney";
 
 const heroSlides = [
   {
@@ -260,7 +263,7 @@ export default function Home() {
             {companyMetrics.map((metric) => (
               <div className="metric-item" key={metric.label}>
                 <span className="metric-icon"><MetricIcon type={metric.icon} /></span>
-                <div><strong>{metric.value}</strong><span>{metric.label}</span></div>
+                <div><AnimatedMetric value={metric.value} /><span>{metric.label}</span></div>
               </div>
             ))}
           </div>
@@ -303,6 +306,20 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="capabilities-section" aria-labelledby="capabilities-title">
+        <div className="section-inner">
+          <div className="section-heading capabilities-heading">
+            <span className="section-kicker">Our capabilities</span>
+            <h2 id="capabilities-title">The support behind better product development</h2>
+            <p>From cultivation and formulation to manufacturing and market readiness, our capabilities are built to support brands at every stage.</p>
+          </div>
+
+          <CapabilitiesCarousel />
+        </div>
+      </section>
+
+      <EndToEndJourney />
 
       <section className="facilities-section legacy-home-section" id="facilities" aria-labelledby="facilities-title">
         <div className="section-inner facilities-layout">
