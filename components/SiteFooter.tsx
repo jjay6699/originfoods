@@ -2,11 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerColumns = [
-  { title: "About TOF", links: [["Journey", "#about"], ["Vision & Mission", "#about"], ["Core Values", "#about"], ["Contact Us", "#contact"]] },
-  { title: "Personalised Services", links: [["Contract Manufacturing", "#services"], ["Custom Formulation", "#services"], ["Registration & Export Documentation", "#services"], ["Laboratory Testing & Analysis", "#services"]] },
-  { title: "Facilities (4G)", links: [["GMP, GAP, GLP, GSP", "#facilities"], ["HACCP & Facilities", "#facilities"]] },
-  { title: "Wheatgrass", links: [["Indoor Organic Cultivation Technology", "#wheatgrass"], ["Manufacturing Process", "#wheatgrass"]] },
-  { title: "Quality Products", links: [["Children's Health & Growth", "#products"], ["Detoxification & Weight Management", "#products"], ["Bio Drink Beverage", "#products"], ["Nutrition & Nourishment", "#products"]] },
+  { title: "About Us", links: [["Company Introduction", "#about"], ["Professional Team", "#about"], ["Manufacturing Excellence", "#about"], ["Awards", "#about"]] },
+  { title: "Solutions", links: [["OEM/ODM Process", "#services"], ["Dosage Forms", "#services"], ["Packaging Types", "#services"], ["Research & Development", "#services"], ["Product Concept", "#products"]] },
+  { title: "Resources", links: [["Functional Ingredients", "#wheatgrass"], ["Insights", "#insights"], ["Events", "#insights"], ["Industry Insights", "#insights"]] },
+  { title: "Contact", links: [["Contact Details", "#contact"], ["Request a Quotation", "#contact"], ["Malaysia Headquarters", "#contact"]] },
 ] as const;
 
 export function SiteFooter() {

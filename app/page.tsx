@@ -4,6 +4,9 @@ import { WorkProcess } from "@/components/WorkProcess";
 import { CapabilitiesCarousel } from "@/components/CapabilitiesCarousel";
 import { AnimatedMetric } from "@/components/AnimatedMetric";
 import { EndToEndJourney } from "@/components/EndToEndJourney";
+import { BrandsHelpedCarousel } from "@/components/BrandsHelpedCarousel";
+import { InsightsSection } from "@/components/InsightsSection";
+import { FinalCtaSection } from "@/components/FinalCtaSection";
 
 const heroSlides = [
   {
@@ -320,6 +323,12 @@ export default function Home() {
       </section>
 
       <EndToEndJourney />
+
+      <BrandsHelpedCarousel />
+
+      <InsightsSection />
+
+      <FinalCtaSection />
 
       <section className="facilities-section legacy-home-section" id="facilities" aria-labelledby="facilities-title">
         <div className="section-inner facilities-layout">
