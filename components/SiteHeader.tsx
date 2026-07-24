@@ -126,7 +126,7 @@ export function SiteHeader() {
             <div ref={oemMenuRef} className="product-mega-menu oem-mega-menu" id="oem-solution-menu">
               <div className="product-mega-intro"><span>OEM / ODM Solution</span><p>From product development and manufacturing to quality, regulatory, and brand support.</p></div>
               <div className="product-mega-groups">
-                {oemSolutionGroups.map((group) => <div className="product-mega-group" key={group.title}><h2>{group.title}</h2>{group.items.map((item) => <Link key={item} href="#services" onClick={() => { setIsOemMenuOpen(false); setIsOpen(false); }}>{item}</Link>)}</div>)}
+                {oemSolutionGroups.map((group) => <div className="product-mega-group" key={group.title}><h2>{group.title}</h2>{group.items.map((item) => <Link key={item} href="/#services" onClick={() => { setIsOemMenuOpen(false); setIsOpen(false); }}>{item}</Link>)}</div>)}
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@ export function SiteHeader() {
             <div ref={productMenuRef} className="product-mega-menu" id="product-concept-menu">
               <div className="product-mega-intro"><span>Product Concept</span><p>Explore product directions across nutrition, wellness, and functional food.</p></div>
               <div className="product-mega-groups">
-                {productConceptGroups.map((group) => <div className="product-mega-group" key={group.title}><h2>{group.title}</h2>{group.items.map((item) => <Link key={item} href="#products" onClick={() => { setIsProductMenuOpen(false); setIsOpen(false); }}>{item}</Link>)}</div>)}
+                {productConceptGroups.map((group) => <div className="product-mega-group" key={group.title}><h2>{group.title}</h2>{group.items.map((item) => <Link key={item} href="/#products" onClick={() => { setIsProductMenuOpen(false); setIsOpen(false); }}>{item}</Link>)}</div>)}
               </div>
             </div>
           </div>
@@ -149,7 +149,7 @@ export function SiteHeader() {
                 {menu.label} <span aria-hidden="true">⌄</span>
               </button>
               <div className="simple-dropdown">
-                {menu.items.map((item) => <Link key={item} href={menu.label === "Contacts" ? "#contact" : menu.label === "Functional ingredients" ? "#wheatgrass" : "#insights"} onClick={() => { setOpenSimpleMenu(null); setIsOpen(false); }}>{item}</Link>)}
+                {menu.items.map((item) => <Link key={item} href={menu.label === "Contacts" ? "/#contact" : menu.label === "Functional ingredients" ? "/#wheatgrass" : "/#insights"} onClick={() => { setOpenSimpleMenu(null); setIsOpen(false); }}>{item}</Link>)}
               </div>
             </div>
           ))}

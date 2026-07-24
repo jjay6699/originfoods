@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerColumns = [
-  { title: "About Us", links: [["Company Introduction", "#about"], ["Professional Team", "#about"], ["Manufacturing Excellence", "#about"], ["Awards", "#about"]] },
-  { title: "Solutions", links: [["OEM/ODM Process", "#services"], ["Dosage Forms", "#services"], ["Packaging Types", "#services"], ["Research & Development", "#services"], ["Product Concept", "#products"]] },
-  { title: "Resources", links: [["Functional Ingredients", "#wheatgrass"], ["Insights", "#insights"], ["Events", "#insights"], ["Industry Insights", "#insights"]] },
-  { title: "Contact", links: [["Contact Details", "#contact"], ["Request a Quotation", "#contact"], ["Malaysia Headquarters", "#contact"]] },
+  { title: "About Us", links: [["Company Introduction", "/#about"], ["Professional Team", "/#about"], ["Manufacturing Excellence", "/#about"], ["Awards", "/#about"]] },
+  { title: "Solutions", links: [["OEM/ODM Process", "/#services"], ["Dosage Forms", "/#services"], ["Packaging Types", "/#services"], ["Research & Development", "/#services"], ["Product Concept", "/#products"]] },
+  { title: "Resources", links: [["Functional Ingredients", "/#wheatgrass"], ["Insights", "/#insights"], ["Events", "/#insights"], ["Industry Insights", "/#insights"]] },
+  { title: "Contact", links: [["Contact Details", "/#contact"], ["Request a Quotation", "/#contact"], ["Malaysia Headquarters", "/#contact"]] },
 ] as const;
 
 export function SiteFooter() {
