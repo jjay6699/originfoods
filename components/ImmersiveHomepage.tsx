@@ -108,11 +108,26 @@ export function ImmersiveHomepage() {
       if (event.deltaY > 0 && ctaTop <= 160 && ctaTop >= -160) root.classList.add("home-footer-scroll");
     };
 
+    let touchStartY = 0;
+    const captureTouchStart = (event: TouchEvent) => {
+      touchStartY = event.touches[0]?.clientY ?? 0;
+    };
+
+    const releaseFooterTouchScroll = (event: TouchEvent) => {
+      const currentY = event.touches[0]?.clientY ?? touchStartY;
+      const ctaTop = contact.getBoundingClientRect().top;
+      if (currentY < touchStartY - 12 && ctaTop <= 160 && ctaTop >= -160) root.classList.add("home-footer-scroll");
+    };
+
     window.addEventListener("scroll", leaveFooterModeAboveCta, { passive: true });
     window.addEventListener("wheel", releaseFooterScroll, { passive: true });
+    window.addEventListener("touchstart", captureTouchStart, { passive: true });
+    window.addEventListener("touchmove", releaseFooterTouchScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", leaveFooterModeAboveCta);
       window.removeEventListener("wheel", releaseFooterScroll);
+      window.removeEventListener("touchstart", captureTouchStart);
+      window.removeEventListener("touchmove", releaseFooterTouchScroll);
     };
   }, []);
 
