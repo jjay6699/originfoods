@@ -9147,6 +9147,10 @@ html.home-scroll-snap body {
   overflow: visible;
 }
 
+html.home-scroll-snap.home-footer-scroll {
+  scroll-snap-type: none;
+}
+
 .editorial-home {
   height: auto;
   min-height: 0;
@@ -9160,6 +9164,15 @@ html.home-scroll-snap body {
   min-height: calc(100dvh - 92px);
 }
 
+/* The shared footer follows the last snapped scene at its natural height. */
+.editorial-footer-scene {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
+
 @media (max-width: 760px) {
   html.home-scroll-snap { scroll-padding-top: 82px; }
 
@@ -9168,5 +9181,10 @@ html.home-scroll-snap body {
   .editorial-scene {
     height: calc(100dvh - 82px);
     min-height: calc(100dvh - 82px);
+  }
+
+  .editorial-footer-scene {
+    height: auto;
+    min-height: 0;
   }
 }

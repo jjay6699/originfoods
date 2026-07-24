@@ -91,7 +91,29 @@ export function ImmersiveHomepage() {
 
   useEffect(() => {
     document.documentElement.classList.add("home-scroll-snap");
-    return () => document.documentElement.classList.remove("home-scroll-snap");
+    return () => document.documentElement.classList.remove("home-scroll-snap", "home-footer-scroll");
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const contact = document.getElementById("contact");
+    if (!contact) return;
+
+    const leaveFooterModeAboveCta = () => {
+      if (contact.getBoundingClientRect().top > 180) root.classList.remove("home-footer-scroll");
+    };
+
+    const releaseFooterScroll = (event: WheelEvent) => {
+      const ctaTop = contact.getBoundingClientRect().top;
+      if (event.deltaY > 0 && ctaTop <= 160 && ctaTop >= -160) root.classList.add("home-footer-scroll");
+    };
+
+    window.addEventListener("scroll", leaveFooterModeAboveCta, { passive: true });
+    window.addEventListener("wheel", releaseFooterScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", leaveFooterModeAboveCta);
+      window.removeEventListener("wheel", releaseFooterScroll);
+    };
   }, []);
 
   useEffect(() => {

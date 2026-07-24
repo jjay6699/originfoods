@@ -45,7 +45,7 @@ const exploreLinks: QuickLink[] = [
 ];
 
 const socialLinks: QuickLink[] = [
-  { label: "LinkedIn", href: "#", icon: "linkedin", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/theoriginfoods/", icon: "linkedin", external: true },
   { label: "Facebook", href: "https://www.facebook.com/TheOriginFoods/", icon: "facebook", external: true },
   { label: "Instagram", href: "https://www.instagram.com/theoriginfoods.my?igsh=bzFmejBjYjg0bTkw", icon: "instagram", external: true },
 ];
