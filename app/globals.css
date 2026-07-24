@@ -2836,15 +2836,27 @@ html.home-scroll-snap body > .site-footer {
   height: calc(100dvh - 92px);
   margin-top: 92px;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: auto;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
-  scrollbar-width: none;
+  scrollbar-width: auto;
+  scrollbar-color: #6d7b72 #f4f5ef;
   background: #f4f5ef;
 }
 
 .editorial-home::-webkit-scrollbar {
-  display: none;
+  display: block;
+  width: 12px;
+}
+
+.editorial-home::-webkit-scrollbar-track {
+  background: #f4f5ef;
+}
+
+.editorial-home::-webkit-scrollbar-thumb {
+  border: 3px solid #f4f5ef;
+  border-radius: 10px;
+  background: #6d7b72;
 }
 
 .editorial-scene {
@@ -8825,4 +8837,192 @@ h1 {
     width: 30px;
     height: 30px;
   }
+}
+
+/* Final homepage close: one dedicated contact scene followed by the shared footer. */
+.editorial-contact {
+  display: grid;
+  grid-template-rows: 1fr;
+  background: #103824;
+}
+
+.editorial-contact-cta {
+  min-height: 0;
+  height: 100%;
+  background: #103824;
+}
+
+.editorial-contact-cta > div {
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.55fr);
+  align-items: center;
+  gap: clamp(48px, 9vw, 160px);
+}
+
+.editorial-contact-cta h2 {
+  max-width: 780px;
+  font-size: clamp(2.35rem, 4.5vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.editorial-contact-cta p {
+  max-width: 570px;
+  margin-top: 20px;
+  font-size: clamp(0.9rem, 1.05vw, 1.05rem);
+  line-height: 1.55;
+}
+
+.editorial-contact-cta address {
+  align-content: center;
+  gap: 10px;
+  padding: 28px 0 28px clamp(28px, 4vw, 64px);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: left;
+}
+
+.editorial-contact-cta address > a {
+  width: fit-content;
+  font-size: clamp(1rem, 1.15vw, 1.14rem);
+}
+
+.editorial-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.editorial-contact-actions a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.editorial-contact-actions a:hover,
+.editorial-contact-actions a:focus-visible {
+  background: #fff;
+  color: #103824;
+}
+
+.editorial-footer-scene {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  background: #eef4f9;
+}
+
+.editorial-footer-scene > .site-footer {
+  min-height: 0;
+}
+
+@media (max-width: 760px) {
+  .editorial-contact { min-height: 100%; }
+
+  .editorial-contact-cta > div {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 78px;
+    padding-bottom: 42px;
+  }
+
+  .editorial-contact-cta h2 { font-size: clamp(2.25rem, 10vw, 3.2rem); }
+  .editorial-contact-cta p { margin-top: 14px; font-size: 0.86rem; }
+
+  .editorial-contact-cta address {
+    padding: 22px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 0;
+  }
+
+}
+
+/* Balance the final CTA as a calm, single-field contact scene. */
+.editorial-contact-cta > div {
+  grid-template-columns: 1fr;
+  gap: clamp(42px, 7vh, 88px);
+  align-content: center;
+}
+
+.editorial-contact-cta h2 {
+  max-width: 900px;
+  font-size: clamp(2.25rem, 3.8vw, 4.35rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.editorial-contact-cta p {
+  max-width: 620px;
+  margin-top: 16px;
+}
+
+.editorial-contact-cta address {
+  display: grid;
+  width: 100%;
+  padding: 22px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.editorial-contact-cta address > a {
+  font-size: clamp(0.92rem, 1vw, 1.04rem);
+}
+
+.editorial-contact-actions {
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+.editorial-contact-actions a {
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+@media (max-width: 760px) {
+  .editorial-contact-cta > div { gap: 34px; }
+
+  .editorial-contact-cta address {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .editorial-contact-actions {
+    justify-content: flex-start;
+    margin-top: 14px;
+  }
+}
+
+/* A focused close: the CTA has one clear next step. */
+.editorial-contact-cta > div {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-content: center;
+}
+
+.editorial-contact-actions {
+  justify-content: flex-start;
+  margin-top: clamp(1.75rem, 4vh, 2.75rem);
+}
+
+.editorial-contact-actions a {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #103824;
+}
+
+.editorial-contact-actions a:hover {
+  background: transparent;
+  color: #ffffff;
 }

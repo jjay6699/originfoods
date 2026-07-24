@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 
 const heroSlides = [
@@ -82,27 +82,11 @@ const stages = [
   },
 ] as const;
 
-const sceneIds = ["home", "about", "services", "manufacturing", "wheatgrass", "contact"] as const;
-const sceneAliases: Record<string, number> = {
-  home: 0,
-  about: 1,
-  services: 2,
-  manufacturing: 3,
-  facilities: 3,
-  products: 4,
-  wheatgrass: 4,
-  insights: 4,
-  contact: 5,
-};
-
 export function ImmersiveHomepage() {
   const [activeHero, setActiveHero] = useState(0);
   const [activeStage, setActiveStage] = useState(0);
   const [heroPaused, setHeroPaused] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const scrollerRef = useRef<HTMLElement>(null);
-  const wheelLocked = useRef(false);
-  const touchStartY = useRef<number | null>(null);
 
   useEffect(() => {
     document.documentElement.classList.add("home-scroll-snap");
@@ -125,99 +109,10 @@ export function ImmersiveHomepage() {
     return () => window.clearInterval(timer);
   }, [heroPaused, reduceMotion]);
 
-  useEffect(() => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-    let unlockTimer = 0;
-
-    const goTo = (index: number, updateHash = true) => {
-      const nextIndex = Math.max(0, Math.min(sceneIds.length - 1, index));
-      scroller.scrollTo({
-        top: nextIndex * scroller.clientHeight,
-        behavior: reduceMotion ? "auto" : "smooth",
-      });
-      if (updateHash) window.history.replaceState(null, "", `#${sceneIds[nextIndex]}`);
-    };
-
-    const currentIndex = () => Math.round(scroller.scrollTop / Math.max(1, scroller.clientHeight));
-
-    const lockNavigation = () => {
-      wheelLocked.current = true;
-      window.clearTimeout(unlockTimer);
-      unlockTimer = window.setTimeout(() => {
-        wheelLocked.current = false;
-      }, reduceMotion ? 120 : 700);
-    };
-
-    const onWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaY) < 8) return;
-      event.preventDefault();
-      if (wheelLocked.current) return;
-      const direction = event.deltaY > 0 ? 1 : -1;
-      const current = currentIndex();
-      const next = Math.max(0, Math.min(sceneIds.length - 1, current + direction));
-      if (next === current) return;
-      lockNavigation();
-      goTo(next);
-    };
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      const target = event.target as HTMLElement | null;
-      if (target?.matches("input, textarea, select")) return;
-      const current = currentIndex();
-      let next: number | null = null;
-      if (["ArrowDown", "PageDown", " "].includes(event.key)) next = current + 1;
-      if (["ArrowUp", "PageUp"].includes(event.key)) next = current - 1;
-      if (event.key === "Home") next = 0;
-      if (event.key === "End") next = sceneIds.length - 1;
-      if (next === null) return;
-      event.preventDefault();
-      goTo(next);
-    };
-
-    const onTouchStart = (event: TouchEvent) => {
-      touchStartY.current = event.touches[0]?.clientY ?? null;
-    };
-
-    const onTouchEnd = (event: TouchEvent) => {
-      const start = touchStartY.current;
-      const end = event.changedTouches[0]?.clientY;
-      touchStartY.current = null;
-      if (start === null || end === undefined || Math.abs(start - end) < 48) return;
-      goTo(currentIndex() + (start > end ? 1 : -1));
-    };
-
-    const onHashChange = () => {
-      const id = window.location.hash.slice(1);
-      if (id in sceneAliases) goTo(sceneAliases[id], false);
-    };
-
-    const onResize = () => goTo(currentIndex(), false);
-
-    scroller.addEventListener("wheel", onWheel, { passive: false });
-    scroller.addEventListener("touchstart", onTouchStart, { passive: true });
-    scroller.addEventListener("touchend", onTouchEnd, { passive: true });
-    window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("hashchange", onHashChange);
-    window.addEventListener("resize", onResize);
-
-    window.setTimeout(onHashChange, 0);
-
-    return () => {
-      window.clearTimeout(unlockTimer);
-      scroller.removeEventListener("wheel", onWheel);
-      scroller.removeEventListener("touchstart", onTouchStart);
-      scroller.removeEventListener("touchend", onTouchEnd);
-      window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("hashchange", onHashChange);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [reduceMotion]);
-
   const hero = heroSlides[activeHero];
 
   return (
-    <main className="editorial-home" ref={scrollerRef}>
+    <main className="editorial-home">
       <section className="editorial-scene editorial-hero" id="home" aria-labelledby="hero-title">
         {heroSlides.map((slide, index) => (
           <Image key={slide.image} className={`editorial-hero-image${index === activeHero ? " is-active" : ""}`} src={slide.image} alt={index === activeHero ? slide.alt : ""} fill priority={index === 0} sizes="100vw" aria-hidden={index !== activeHero} />
@@ -319,10 +214,15 @@ export function ImmersiveHomepage() {
       <section className="editorial-scene editorial-contact" id="contact" aria-labelledby="contact-title">
         <div className="editorial-contact-cta">
           <div className="editorial-width">
-            <div><h2 id="contact-title">Let&apos;s discuss your product.</h2><p>Tell us what you want to create and how far the idea has progressed.</p></div>
-            <address><a href="mailto:origincares@tof.com.my">origincares@tof.com.my</a><a href="tel:+60358821860">+6 03 5882 1860</a></address>
+            <div>
+              <h2 id="contact-title">Let&apos;s discuss your product.</h2>
+              <p>Tell us what you want to create, where you are in the process, and the support you need to move forward.</p>
+              <div className="editorial-contact-actions"><Link href="/start">Contact us <span aria-hidden="true">→</span></Link></div>
+            </div>
           </div>
         </div>
+      </section>
+      <section className="editorial-scene editorial-footer-scene" id="footer" aria-label="Site footer">
         <SiteFooter />
       </section>
     </main>
