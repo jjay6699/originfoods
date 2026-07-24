@@ -30,29 +30,24 @@ type QuickLink = {
 };
 
 // Replace these placeholder destinations when the final URLs are supplied.
-const quickLinks: { title: string; items: QuickLink[] }[] = [
-  {
-    title: "Company",
-    items: [
-      { label: "Visit Our Website", href: "/", icon: "website" },
-      { label: "Explore Our OEM/ODM Process", href: "/#manufacturing", icon: "factory" },
-      { label: "Download Company Profile", href: "#", icon: "document", download: true },
-      { label: "View Our Certifications", href: "#", icon: "certification" },
-      { label: "Awards & Recognition", href: "/about#awards", icon: "award" },
-      { label: "Watch Our Factory Video", href: "#", icon: "video" },
-    ],
-  },
-  {
-    title: "Connect",
-    items: [
-      { label: "Request an OEM Quotation", href: "/#contact", icon: "quotation" },
-      { label: "Chat with Us on WhatsApp", href: "#", icon: "whatsapp", external: true },
-      { label: "Book a Meeting / Factory Visit", href: "#", icon: "calendar", external: true },
-      { label: "Follow Us on LinkedIn", href: "#", icon: "linkedin", external: true },
-      { label: "Follow Us on Facebook", href: "#", icon: "facebook", external: true },
-      { label: "Follow Us on Instagram", href: "#", icon: "instagram", external: true },
-    ],
-  },
+const projectLinks: QuickLink[] = [
+  { label: "Request an OEM Quotation", href: "/#contact", icon: "quotation" },
+  { label: "Book a Meeting / Factory Visit", href: "#", icon: "calendar", external: true },
+  { label: "Chat with Us on WhatsApp", href: "#", icon: "whatsapp", external: true },
+];
+
+const exploreLinks: QuickLink[] = [
+  { label: "Explore Our OEM/ODM Process", href: "/#manufacturing", icon: "factory" },
+  { label: "Download Company Profile", href: "#", icon: "document", download: true },
+  { label: "View Our Certifications", href: "#", icon: "certification" },
+  { label: "Awards & Recognition", href: "/about#awards", icon: "award" },
+  { label: "Watch Our Factory Video", href: "#", icon: "video" },
+];
+
+const socialLinks: QuickLink[] = [
+  { label: "LinkedIn", href: "#", icon: "linkedin", external: true },
+  { label: "Facebook", href: "#", icon: "facebook", external: true },
+  { label: "Instagram", href: "#", icon: "instagram", external: true },
 ];
 
 function QuickAccessIcon({ name }: { name: IconName }) {
@@ -84,35 +79,71 @@ export default function StartPage() {
       <header className={styles.header}>
         <div className={styles.introduction}>
           <h1>Quick Access</h1>
-          <p>Company information, manufacturing services, and direct contact—all in one place.</p>
+          <p>Start a project, explore our capabilities, or connect with the Origin Foods team.</p>
         </div>
       </header>
 
       <div className={styles.directory}>
-        {quickLinks.map((group) => (
-          <section className={styles.group} key={group.title} aria-labelledby={`quick-${group.title.toLowerCase()}`}>
-            <h2 id={`quick-${group.title.toLowerCase()}`}>{group.title}</h2>
-            <nav aria-label={`${group.title} quick links`}>
-              {group.items.map((item) => (
-                <Link
-                  className={styles.link}
-                  href={item.href}
-                  key={item.label}
-                  target={item.external && item.href !== "#" ? "_blank" : undefined}
-                  rel={item.external && item.href !== "#" ? "noreferrer" : undefined}
-                  download={item.download && item.href !== "#" ? true : undefined}
-                >
-                  <span className={styles.icon}><QuickAccessIcon name={item.icon} /></span>
-                  <span>{item.label}</span>
-                  <svg className={styles.arrow} viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="M4 10h11M11 6l4 4-4 4" />
-                  </svg>
-                </Link>
-              ))}
-            </nav>
-          </section>
-        ))}
+        <section className={styles.websiteGroup} aria-labelledby="quick-website">
+          <div>
+            <h2 id="quick-website">The Origin Foods</h2>
+            <p>Explore our health supplement manufacturing capabilities, products, and expertise.</p>
+          </div>
+          <Link className={styles.websiteLink} href="/">
+            <span className={styles.icon}><QuickAccessIcon name="website" /></span>
+            <span>Visit Our Website</span>
+            <svg className={styles.arrow} viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
+          </Link>
+        </section>
+
+        <section className={styles.projectGroup} aria-labelledby="quick-project">
+          <div className={styles.sectionHeading}>
+            <h2 id="quick-project">Start a project</h2>
+            <p>Speak with our team about your product or factory visit.</p>
+          </div>
+          <nav className={styles.projectLinks} aria-label="Start a project">
+            {projectLinks.map((item) => <QuickAccessLink item={item} key={item.label} className={styles.projectLink} />)}
+          </nav>
+        </section>
+
+        <section className={styles.exploreGroup} aria-labelledby="quick-explore">
+          <div className={styles.sectionHeading}>
+            <h2 id="quick-explore">Explore Origin Foods</h2>
+            <p>Learn more about our manufacturing process, standards, and company.</p>
+          </div>
+          <nav className={styles.exploreLinks} aria-label="Explore Origin Foods">
+            {exploreLinks.map((item) => <QuickAccessLink item={item} key={item.label} />)}
+          </nav>
+        </section>
+
+        <section className={styles.followGroup} aria-labelledby="quick-follow">
+          <div className={styles.sectionHeading}>
+            <h2 id="quick-follow">Follow</h2>
+            <p>Updates from our team and facilities.</p>
+          </div>
+          <nav className={styles.socialLinks} aria-label="Follow Origin Foods">
+            {socialLinks.map((item) => <QuickAccessLink item={item} key={item.label} className={styles.socialLink} />)}
+          </nav>
+        </section>
       </div>
     </main>
+  );
+}
+
+function QuickAccessLink({ item, className }: { item: QuickLink; className?: string }) {
+  return (
+    <Link
+      className={`${styles.link}${className ? ` ${className}` : ""}`}
+      href={item.href}
+      target={item.external && item.href !== "#" ? "_blank" : undefined}
+      rel={item.external && item.href !== "#" ? "noreferrer" : undefined}
+      download={item.download && item.href !== "#" ? true : undefined}
+    >
+      <span className={styles.icon}><QuickAccessIcon name={item.icon} /></span>
+      <span>{item.label}</span>
+      <svg className={styles.arrow} viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M4 10h11M11 6l4 4-4 4" />
+      </svg>
+    </Link>
   );
 }
