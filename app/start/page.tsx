@@ -29,25 +29,25 @@ type QuickLink = {
   download?: boolean;
 };
 
-// Replace these placeholder destinations when the final URLs are supplied.
 const projectLinks: QuickLink[] = [
   { label: "Request an OEM Quotation", href: "/#contact", icon: "quotation" },
   { label: "Book a Meeting / Factory Visit", href: "#", icon: "calendar", external: true },
-  { label: "Chat with Us on WhatsApp", href: "#", icon: "whatsapp", external: true },
+  { label: "Chat with Us on WhatsApp", href: "https://wa.me/60109638126", icon: "whatsapp", external: true },
 ];
 
 const exploreLinks: QuickLink[] = [
   { label: "Explore Our OEM/ODM Process", href: "/#manufacturing", icon: "factory" },
-  { label: "Download Company Profile", href: "#", icon: "document", download: true },
+  { label: "Download Company Profile", href: "/downloads/the-origin-foods-company-profile-2024.pdf", icon: "document", download: true },
   { label: "View Our Certifications", href: "#", icon: "certification" },
   { label: "Awards & Recognition", href: "/about#awards", icon: "award" },
-  { label: "Watch Our Factory Video", href: "#", icon: "video" },
+  { label: "Watch Our Factory Video", href: "https://youtu.be/OQmTDvRnNgw?si=c_ZWRInJ3ATf8vwz", icon: "video", external: true },
+  { label: "Watch Bar Production Video", href: "https://youtu.be/0kQIqbVwVr0?si=0WuW-sg-LbbK6kVT", icon: "video", external: true },
 ];
 
 const socialLinks: QuickLink[] = [
   { label: "LinkedIn", href: "#", icon: "linkedin", external: true },
-  { label: "Facebook", href: "#", icon: "facebook", external: true },
-  { label: "Instagram", href: "#", icon: "instagram", external: true },
+  { label: "Facebook", href: "https://www.facebook.com/TheOriginFoods/", icon: "facebook", external: true },
+  { label: "Instagram", href: "https://www.instagram.com/theoriginfoods.my?igsh=bzFmejBjYjg0bTkw", icon: "instagram", external: true },
 ];
 
 function QuickAccessIcon({ name }: { name: IconName }) {
