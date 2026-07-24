@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -108,6 +109,19 @@ export function ImmersiveHomepage() {
     }, 3000);
     return () => window.clearInterval(timer);
   }, [heroPaused, reduceMotion]);
+
+  const handleEnquirySubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const details = [
+      `Name: ${form.get("name")}`,
+      `Company: ${form.get("company")}`,
+      `Email: ${form.get("email")}`,
+      `Phone: ${form.get("phone")}`,
+    ].join("\n");
+
+    window.location.href = `mailto:inquiry@mytof-main.com.my?subject=${encodeURIComponent("Product enquiry from Origin Foods website")}&body=${encodeURIComponent(details)}`;
+  };
 
   const hero = heroSlides[activeHero];
 
@@ -217,8 +231,20 @@ export function ImmersiveHomepage() {
             <div>
               <h2 id="contact-title">Let&apos;s discuss your product.</h2>
               <p>Tell us what you want to create, where you are in the process, and the support you need to move forward.</p>
-              <div className="editorial-contact-actions"><Link href="/start">Contact us <span aria-hidden="true">→</span></Link></div>
             </div>
+            <form className="editorial-enquiry-form" onSubmit={handleEnquirySubmit}>
+              <div className="editorial-enquiry-heading">
+                <h3>Start an enquiry</h3>
+                <p>Leave your details and we&apos;ll help direct the next conversation.</p>
+              </div>
+              <div className="editorial-enquiry-fields">
+                <label>Name<input name="name" type="text" autoComplete="name" required /></label>
+                <label>Company<input name="company" type="text" autoComplete="organization" required /></label>
+                <label>Email<input name="email" type="email" autoComplete="email" required /></label>
+                <label>Phone<input name="phone" type="tel" autoComplete="tel" required /></label>
+              </div>
+              <button type="submit">Send enquiry <span aria-hidden="true">→</span></button>
+            </form>
           </div>
         </div>
       </section>

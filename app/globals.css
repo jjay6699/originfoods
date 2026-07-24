@@ -3026,7 +3026,7 @@ html.home-scroll-snap body > .site-footer {
   max-width: 520px;
   margin: 14px 0 0;
   color: #536159;
-  font-size: 0.9rem;
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem);
   line-height: 1.55;
 }
 
@@ -3052,15 +3052,15 @@ html.home-scroll-snap body > .site-footer {
 
 .editorial-proof-grid dt {
   color: #126a3d;
-  font-size: 1.05rem;
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
   font-weight: 800;
 }
 
 .editorial-proof-grid dd {
   margin: 6px 0 0;
   color: #536159;
-  font-size: 0.72rem;
-  line-height: 1.4;
+  font-size: clamp(0.8rem, 0.88vw, 0.92rem);
+  line-height: 1.45;
 }
 
 .editorial-audiences {
@@ -3423,7 +3423,7 @@ html.home-scroll-snap body > .site-footer {
 
   .editorial-proof-grid p {
     margin-top: 8px;
-    font-size: 0.78rem;
+    font-size: 0.88rem;
   }
 
   .editorial-proof-grid dl > div {
@@ -3435,11 +3435,11 @@ html.home-scroll-snap body > .site-footer {
   }
 
   .editorial-proof-grid dt {
-    font-size: 0.78rem;
+    font-size: 0.92rem;
   }
 
   .editorial-proof-grid dd {
-    font-size: 0.6rem;
+    font-size: 0.74rem;
   }
 
   .editorial-audiences {
@@ -9025,4 +9025,110 @@ h1 {
 .editorial-contact-actions a:hover {
   background: transparent;
   color: #ffffff;
+}
+
+/* Homepage enquiry form: enough structure to fill the closing scene without becoming a heavy panel. */
+.editorial-contact-cta > div {
+  grid-template-columns: minmax(0, 0.94fr) minmax(360px, 0.76fr);
+  gap: clamp(52px, 9vw, 150px);
+  align-items: center;
+}
+
+.editorial-enquiry-form {
+  display: grid;
+  gap: 24px;
+  padding: clamp(24px, 3vw, 38px) 0 0 clamp(24px, 4vw, 56px);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.editorial-enquiry-heading h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.15rem, 1.45vw, 1.45rem);
+  letter-spacing: -0.025em;
+}
+
+.editorial-enquiry-heading p {
+  max-width: 390px;
+  margin: 7px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.editorial-enquiry-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+
+.editorial-enquiry-fields label {
+  display: grid;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.editorial-enquiry-fields input {
+  width: 100%;
+  min-height: 38px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+}
+
+.editorial-enquiry-fields input:focus {
+  border-bottom-color: #ffffff;
+}
+
+.editorial-enquiry-form button {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  background: #ffffff;
+  color: #103824;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.editorial-enquiry-form button:hover,
+.editorial-enquiry-form button:focus-visible {
+  background: transparent;
+  color: #ffffff;
+}
+
+@media (max-width: 760px) {
+  .editorial-contact-cta > div {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding-top: 64px;
+    padding-bottom: 52px;
+  }
+
+  .editorial-enquiry-form {
+    gap: 20px;
+    padding: 26px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 0;
+  }
+
+  .editorial-enquiry-fields { gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .editorial-enquiry-fields { grid-template-columns: 1fr; }
 }
