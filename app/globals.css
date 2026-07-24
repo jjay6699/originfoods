@@ -9132,3 +9132,41 @@ h1 {
 @media (max-width: 480px) {
   .editorial-enquiry-fields { grid-template-columns: 1fr; }
 }
+
+/* Keep homepage scrolling on the document so its scrollbar shares the header's viewport. */
+html.home-scroll-snap {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-padding-top: 92px;
+  scroll-snap-type: y mandatory;
+  scrollbar-gutter: stable;
+  scrollbar-color: #6d7b72 #f4f5ef;
+}
+
+html.home-scroll-snap body {
+  overflow: visible;
+}
+
+.editorial-home {
+  height: auto;
+  min-height: 0;
+  margin-top: 92px;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+
+.editorial-scene {
+  height: calc(100dvh - 92px);
+  min-height: calc(100dvh - 92px);
+}
+
+@media (max-width: 760px) {
+  html.home-scroll-snap { scroll-padding-top: 82px; }
+
+  .editorial-home { margin-top: 82px; }
+
+  .editorial-scene {
+    height: calc(100dvh - 82px);
+    min-height: calc(100dvh - 82px);
+  }
+}
