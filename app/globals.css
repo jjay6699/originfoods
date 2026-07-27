@@ -9137,18 +9137,14 @@ h1 {
 html.home-scroll-snap {
   overflow-x: hidden;
   overflow-y: scroll;
-  scroll-padding-top: 92px;
-  scroll-snap-type: y mandatory;
+  scroll-padding: 0;
+  scroll-snap-type: none;
   scrollbar-gutter: stable;
   scrollbar-color: #6d7b72 #f4f5ef;
 }
 
 html.home-scroll-snap body {
   overflow: visible;
-}
-
-html.home-scroll-snap.home-footer-scroll {
-  scroll-snap-type: none;
 }
 
 .editorial-home {
@@ -9162,6 +9158,8 @@ html.home-scroll-snap.home-footer-scroll {
 .editorial-scene {
   height: calc(100dvh - 92px);
   min-height: calc(100dvh - 92px);
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
 }
 
 /* The shared footer follows the last snapped scene at its natural height. */
@@ -9174,8 +9172,6 @@ html.home-scroll-snap.home-footer-scroll {
 }
 
 @media (max-width: 760px) {
-  html.home-scroll-snap { scroll-padding-top: 82px; }
-
   .editorial-home { margin-top: 82px; }
 
   .editorial-scene {
